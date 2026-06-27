@@ -25,9 +25,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "LIA · Tu segundo cerebro de escritorio" },
-      { name: "description", content: "Asistente de escritorio con IA local. Captura ideas desde cualquier app y las convierte en notas que se conectan solas." },
+      {
+        name: "description",
+        content:
+          "Asistente de escritorio con IA local. Captura ideas desde cualquier app y las convierte en notas que se conectan solas.",
+      },
       { property: "og:title", content: "LIA · Tu segundo cerebro de escritorio" },
-      { property: "og:description", content: "Asistente de escritorio con IA local. Tus notas siempre tuyas." },
+      {
+        property: "og:description",
+        content: "Asistente de escritorio con IA local. Tus notas siempre tuyas.",
+      },
     ],
   }),
   component: Index,
@@ -35,10 +42,18 @@ export const Route = createFileRoute("/")({
 
 const features = [
   { icon: MessageSquare, title: "Chat real", desc: "Burbujas reales y respuestas en Markdown." },
-  { icon: Search, title: "Búsqueda semántica", desc: "Encuentra notas por significado, no por palabra." },
+  {
+    icon: Search,
+    title: "Búsqueda semántica",
+    desc: "Encuentra notas por significado, no por palabra.",
+  },
   { icon: Link2, title: "Auto-enlazado", desc: "Las notas relacionadas se conectan solas." },
   { icon: Tags, title: "Auto-etiquetado", desc: "Personas, proyectos y lugares, sin esfuerzo." },
-  { icon: Bell, title: "Recordatorios proactivos", desc: "Aprenden de tu feedback y se callan si molestan." },
+  {
+    icon: Bell,
+    title: "Recordatorios proactivos",
+    desc: "Aprenden de tu feedback y se callan si molestan.",
+  },
   { icon: Sun, title: "Resumen diario", desc: "Conecta lo de hoy con lo que ya sabías." },
   { icon: Mic, title: "Voz y visión", desc: "Transcripción local y captura desde tu pantalla." },
   { icon: FileText, title: "Tus archivos .md", desc: "Markdown normal. Obsidian opcional." },
@@ -75,22 +90,35 @@ function Nav() {
     <header className="sticky top-0 z-40 backdrop-blur-md border-b border-border/40 bg-background/60">
       <div className="mx-auto max-w-6xl px-5 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2.5 group">
-          <span className="relative grid h-7 w-7 place-items-center rounded-full"
+          <span
+            className="relative grid h-7 w-7 place-items-center rounded-full"
             style={{
-              background: "radial-gradient(circle at 35% 30%, #C7D2FE 0%, #6366F1 60%, #3730A3 100%)",
+              background:
+                "radial-gradient(circle at 35% 30%, #C7D2FE 0%, #6366F1 60%, #3730A3 100%)",
               boxShadow: "0 0 14px rgba(99,102,241,0.6)",
             }}
           />
           <span className="font-semibold tracking-tight text-base">LIA</span>
         </a>
         <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
-          <a href="#por-que" className="link-underline hover:text-foreground transition-colors">Por qué</a>
-          <a href="#features" className="link-underline hover:text-foreground transition-colors">Features</a>
-          <a href="#como-funciona" className="link-underline hover:text-foreground transition-colors">Cómo funciona</a>
-          <a href="#privacidad" className="link-underline hover:text-foreground transition-colors">Privacidad</a>
+          <a href="#por-que" className="link-underline hover:text-foreground transition-colors">
+            Por qué
+          </a>
+          <a href="#features" className="link-underline hover:text-foreground transition-colors">
+            Features
+          </a>
+          <a
+            href="#como-funciona"
+            className="link-underline hover:text-foreground transition-colors"
+          >
+            Cómo funciona
+          </a>
+          <a href="#privacidad" className="link-underline hover:text-foreground transition-colors">
+            Privacidad
+          </a>
         </nav>
         <a
-          href="#"
+          href="https://github.com/HugoCatl/LIAwebsite/releases/latest/download/LIA.exe"
           className="btn-primary-anim text-sm font-medium px-3.5 py-2 rounded-lg bg-[var(--primary)] text-primary-foreground glow-indigo"
         >
           Descargar
@@ -144,7 +172,7 @@ function Hero() {
               <span
                 key={`h-${i}`}
                 className="word"
-                style={{ ["--word-delay" as any]: `${i * 110}ms` }}
+                style={{ "--word-delay": `${i * 110}ms` } as React.CSSProperties}
               >
                 {w}&nbsp;
               </span>
@@ -154,7 +182,11 @@ function Hero() {
                 <span
                   key={`ha-${i}`}
                   className="word"
-                  style={{ ["--word-delay" as any]: `${(headline.length + i) * 110}ms` }}
+                  style={
+                    {
+                      "--word-delay": `${(headline.length + i) * 110}ms`,
+                    } as React.CSSProperties
+                  }
                 >
                   {w}
                   {i < headlineAccent.length - 1 ? "\u00A0" : ""}
@@ -164,16 +196,17 @@ function Hero() {
           </h1>
           <p
             className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed word"
-            style={{ ["--word-delay" as any]: "650ms" }}
+            style={{ "--word-delay": "650ms" } as React.CSSProperties}
           >
-            LIA vive en tu pantalla y convierte tus ideas —dichas, copiadas o vistas— en notas que se conectan solas. IA local, tus datos siempre tuyos.
+            LIA vive en tu pantalla y convierte tus ideas —dichas, copiadas o vistas— en notas que
+            se conectan solas. IA local, tus datos siempre tuyos.
           </p>
           <div
             className="mt-8 flex flex-wrap gap-3 word"
-            style={{ ["--word-delay" as any]: "800ms" }}
+            style={{ "--word-delay": "800ms" } as React.CSSProperties}
           >
             <a
-              href="#"
+              href="https://github.com/HugoCatl/LIAwebsite/releases/latest/download/LIA.exe"
               className="btn-primary-anim inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--primary)] text-primary-foreground font-medium glow-indigo"
             >
               <Download className="w-4 h-4" />
@@ -192,7 +225,7 @@ function Hero() {
           </div>
           <p
             className="mt-5 text-sm text-muted-foreground word"
-            style={{ ["--word-delay" as any]: "950ms" }}
+            style={{ "--word-delay": "950ms" } as React.CSSProperties}
           >
             Gratis · Windows 10/11 · Sin instalar Python ni nada
           </p>
@@ -240,8 +273,12 @@ function WhyDifferent() {
         <div ref={gridRef} className="reveal stagger grid md:grid-cols-3 gap-5">
           {items.map((it) => (
             <div key={it.title} className="glass card-hover p-7">
-              <div className="w-11 h-11 rounded-xl grid place-items-center mb-5"
-                style={{ background: "rgba(99,102,241,0.15)", boxShadow: "inset 0 0 0 1px rgba(99,102,241,0.25)" }}
+              <div
+                className="w-11 h-11 rounded-xl grid place-items-center mb-5"
+                style={{
+                  background: "rgba(99,102,241,0.15)",
+                  boxShadow: "inset 0 0 0 1px rgba(99,102,241,0.25)",
+                }}
               >
                 <it.icon className="feature-icon w-5 h-5 text-[var(--primary-bright)]" />
               </div>
@@ -263,7 +300,9 @@ function Features() {
       <div className="mx-auto max-w-6xl px-5">
         <div ref={headRef} className="reveal max-w-2xl mb-14">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Todo lo que hace LIA</h2>
-          <p className="mt-4 text-muted-foreground">Pensado para que pares de organizar y empieces a pensar.</p>
+          <p className="mt-4 text-muted-foreground">
+            Pensado para que pares de organizar y empieces a pensar.
+          </p>
         </div>
         <div ref={gridRef} className="reveal stagger grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {features.map((f) => (
@@ -282,7 +321,11 @@ function Features() {
 function HowItWorks() {
   const steps = [
     { n: "01", title: "Descárgala y ábrela", desc: "Un doble clic. Se instala sola." },
-    { n: "02", title: "Pon tu nombre y tu clave de Gemini", desc: "Gratuita, de Google. Te dejamos el enlace." },
+    {
+      n: "02",
+      title: "Pon tu nombre y tu clave de Gemini",
+      desc: "Gratuita, de Google. Te dejamos el enlace.",
+    },
     { n: "03", title: "Empieza a soltar ideas", desc: "LIA las captura y las conecta por ti." },
   ];
   const headRef = useReveal<HTMLDivElement>();
@@ -369,8 +412,12 @@ function Privacy() {
             style={{ background: "radial-gradient(circle, #6366F1, transparent 70%)" }}
           />
           <div className="relative flex flex-col md:flex-row items-start gap-6">
-            <div className="w-12 h-12 shrink-0 rounded-xl grid place-items-center"
-              style={{ background: "rgba(99,102,241,0.15)", boxShadow: "inset 0 0 0 1px rgba(99,102,241,0.3)" }}
+            <div
+              className="w-12 h-12 shrink-0 rounded-xl grid place-items-center"
+              style={{
+                background: "rgba(99,102,241,0.15)",
+                boxShadow: "inset 0 0 0 1px rgba(99,102,241,0.3)",
+              }}
             >
               <ShieldCheck className="w-6 h-6 text-[var(--primary-bright)]" />
             </div>
@@ -379,7 +426,8 @@ function Privacy() {
                 Lo sensible nunca sale de tu equipo.
               </h2>
               <p className="mt-4 text-muted-foreground leading-relaxed md:text-lg">
-                La voz, los embeddings y el aprendizaje corren en local. Nunca enviamos tu colección de notas a la nube.
+                La voz, los embeddings y el aprendizaje corren en local. Nunca enviamos tu colección
+                de notas a la nube.
               </p>
             </div>
           </div>
@@ -418,14 +466,17 @@ function FinalCTA() {
   const ref = useReveal<HTMLDivElement>();
   return (
     <section className="py-24 md:py-32">
-      <div ref={ref} className="reveal mx-auto max-w-3xl px-5 text-center flex flex-col items-center">
+      <div
+        ref={ref}
+        className="reveal mx-auto max-w-3xl px-5 text-center flex flex-col items-center"
+      >
         <Orb size={140} className="mb-8" />
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
           Empieza a construir tu <span className="text-gradient-indigo">segundo cerebro.</span>
         </h2>
         <div className="mt-8">
           <a
-            href="#"
+            href="https://github.com/HugoCatl/LIAwebsite/releases/latest/download/LIA.exe"
             className="btn-primary-anim cta-pulse inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--primary)] text-primary-foreground font-medium glow-indigo"
           >
             <Download className="w-4 h-4" />
@@ -433,7 +484,8 @@ function FinalCTA() {
           </a>
         </div>
         <p className="mt-6 text-xs text-muted-foreground max-w-md leading-relaxed">
-          Al abrirla, Windows mostrará un aviso de "editor desconocido" (la app no está firmada) → Más información → Ejecutar. Necesitas una clave gratuita de Google Gemini.
+          Al abrirla, Windows mostrará un aviso de "editor desconocido" (la app no está firmada) →
+          Más información → Ejecutar. Necesitas una clave gratuita de Google Gemini.
         </p>
       </div>
     </section>

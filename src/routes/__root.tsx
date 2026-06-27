@@ -78,10 +78,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "LIA · Tu segundo cerebro de escritorio" },
-      { name: "description", content: "LIA es un asistente de escritorio con IA local que captura tus ideas desde cualquier app y las convierte en notas que se conectan solas." },
+      {
+        name: "description",
+        content:
+          "LIA es un asistente de escritorio con IA local que captura tus ideas desde cualquier app y las convierte en notas que se conectan solas.",
+      },
       { name: "author", content: "Hugo Catalán" },
       { property: "og:title", content: "LIA · Tu segundo cerebro de escritorio" },
-      { property: "og:description", content: "Captura ideas desde cualquier app. IA local. Tus notas siempre tuyas." },
+      {
+        property: "og:description",
+        content: "Captura ideas desde cualquier app. IA local. Tus notas siempre tuyas.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },

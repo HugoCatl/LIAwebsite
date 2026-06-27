@@ -53,7 +53,10 @@ export function Orb({ size = 360, className, withOrbits = false }: OrbProps) {
               style={{ ["--orbit-r" as any]: `${r * 0.82}px`, opacity: 0.55, width: 3, height: 3 }}
             />
           </div>
-          <div className="orbit" style={{ ["--orbit-duration" as any]: "32s", transform: "rotate(220deg)" }}>
+          <div
+            className="orbit"
+            style={{ ["--orbit-duration" as any]: "32s", transform: "rotate(220deg)" }}
+          >
             <span
               className="orbit__dot"
               style={{ ["--orbit-r" as any]: `${r * 0.95}px`, opacity: 0.4, width: 2, height: 2 }}
@@ -82,8 +85,7 @@ export function Orb({ size = 360, className, withOrbits = false }: OrbProps) {
             left: "18%",
             width: "30%",
             height: "22%",
-            background:
-              "radial-gradient(ellipse, rgba(255,255,255,0.55) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(255,255,255,0.55) 0%, transparent 70%)",
             filter: "blur(4px)",
           }}
         />
