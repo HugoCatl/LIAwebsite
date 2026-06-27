@@ -1,0 +1,63 @@
+name: Deploy to GitHub Pages
+
+# Publica la web estática en GitHub Pages en cada push a main.
+# El build usa GITHUB_PAGES=true, que activa en vite.config.ts el modo
+# estático (prerender + base path /LIAwebsite/). El entorno de Lovable no
+# define esa variable, así que su preview/SSR no se ve afectado.
+
+on:
+  push:
+    branches: [main]
+  # Permite lanzarlo a mano desde la pestaña Actions.
+  workflow_dispatch:
+
+# Permisos que necesita el despliegue oficial de Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un único despliegue a la vez; no cancela el que esté en curso.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build (static)
+        run: bun run build
+        env:
+          GITHUB_PAGES: "true"
+
+      - name: SPA fallback (404 = index)
+        # Para que los enlaces profundos y los refrescos los resuelva el router.
+        run: cp dist/client/index.html dist/client/404.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
