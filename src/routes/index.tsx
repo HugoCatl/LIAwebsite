@@ -21,22 +21,10 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+// Los metadatos SEO (title, description, Open Graph, Twitter, canonical,
+// JSON-LD…) se definen una sola vez en src/routes/__root.tsx, ya que se
+// trata de una landing de una sola página. Mantenerlos ahí evita duplicados.
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "LIA · Tu segundo cerebro de escritorio" },
-      {
-        name: "description",
-        content:
-          "Asistente de escritorio con IA local. Captura ideas desde cualquier app y las convierte en notas que se conectan solas.",
-      },
-      { property: "og:title", content: "LIA · Tu segundo cerebro de escritorio" },
-      {
-        property: "og:description",
-        content: "Asistente de escritorio con IA local. Tus notas siempre tuyas.",
-      },
-    ],
-  }),
   component: Index,
 });
 
@@ -64,13 +52,15 @@ function Index() {
     <div className="min-h-screen text-foreground">
       <Aurora />
       <Nav />
-      <Hero />
-      <WhyDifferent />
-      <Features />
-      <HowItWorks />
-      <Privacy />
-      <Stack />
-      <FinalCTA />
+      <main>
+        <Hero />
+        <WhyDifferent />
+        <Features />
+        <HowItWorks />
+        <Privacy />
+        <Stack />
+        <FinalCTA />
+      </main>
       <Footer />
     </div>
   );
@@ -89,7 +79,7 @@ function Nav() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md border-b border-border/40 bg-background/60">
       <div className="mx-auto max-w-6xl px-5 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2.5 group">
+        <a href="/" aria-label="LIA — Inicio" className="flex items-center gap-2.5 group">
           <span
             className="relative grid h-7 w-7 place-items-center rounded-full"
             style={{
@@ -227,7 +217,7 @@ function Hero() {
             className="mt-5 text-sm text-muted-foreground word"
             style={{ "--word-delay": "950ms" } as React.CSSProperties}
           >
-            Gratis · Windows 10/11 · Sin instalar Python ni nada
+            Gratis · Windows 10/11 · No instalas nada: viene todo dentro
           </p>
         </div>
 
@@ -323,8 +313,8 @@ function HowItWorks() {
     { n: "01", title: "Descárgala y ábrela", desc: "Un doble clic. Se instala sola." },
     {
       n: "02",
-      title: "Pon tu nombre y tu clave de Gemini",
-      desc: "Gratuita, de Google. Te dejamos el enlace.",
+      title: "Tu nombre y tu clave de Gemini",
+      desc: "La clave es gratuita, de Google, y se saca en un minuto. Te dejamos el enlace.",
     },
     { n: "03", title: "Empieza a soltar ideas", desc: "LIA las captura y las conecta por ti." },
   ];
@@ -426,8 +416,9 @@ function Privacy() {
                 Lo sensible nunca sale de tu equipo.
               </h2>
               <p className="mt-4 text-muted-foreground leading-relaxed md:text-lg">
-                La voz, los embeddings y el aprendizaje corren en local. Nunca enviamos tu colección
-                de notas a la nube.
+                La voz, los embeddings y el aprendizaje corren en local. A la nube solo viaja el
+                texto de la conversación de chat, lo justo para que Gemini te responda. Tu colección
+                de notas nunca sale de tu equipo.
               </p>
             </div>
           </div>
@@ -455,7 +446,8 @@ function Stack() {
           ))}
         </div>
         <p className="mt-6 text-sm text-muted-foreground max-w-xl mx-auto">
-          Un proyecto de ingeniería: IA en local + arquitectura limpia + ~100 tests.
+          Un proyecto de ingeniería: IA en local + arquitectura limpia + más de 100 tests
+          automatizados.
         </p>
       </div>
     </section>

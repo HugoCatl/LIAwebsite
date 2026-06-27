@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hugocatl.github.io/LIAwebsite/sitemap.xml
