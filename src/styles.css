@@ -152,10 +152,23 @@
     font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
     font-feature-settings: "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
+  }
+
+  /*
+   * Fondo ambiental. Antes iba en `body` con `background-attachment: fixed`,
+   * que fuerza un repintado del fondo en cada frame de scroll (jank). Al
+   * moverlo a una capa fija propia se ve idéntico pero el navegador solo la
+   * compone una vez.
+   */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
     background-image:
       radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99, 102, 241, 0.15), transparent),
       radial-gradient(ellipse 60% 40% at 80% 30%, rgba(55, 48, 163, 0.12), transparent);
-    background-attachment: fixed;
   }
 }
 
@@ -381,7 +394,6 @@
     transform 220ms ease-out,
     border-color 220ms ease-out,
     box-shadow 220ms ease-out;
-  will-change: transform;
 }
 .card-hover:hover {
   transform: translateY(-4px);
@@ -432,9 +444,12 @@
 .aurora__blob {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(120px);
+  filter: blur(90px);
   opacity: 0.35;
   will-change: transform;
+  /* Aísla el desenfoque en su propia capa: se rasteriza una vez y solo se
+     transforma, en vez de recalcular el blur en cada frame. */
+  transform: translateZ(0);
 }
 .aurora__blob--a {
   top: -10%;

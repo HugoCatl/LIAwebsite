@@ -21,6 +21,7 @@ export function Orb({ size = 360, className, withOrbits = false }: OrbProps) {
           background:
             "radial-gradient(circle, rgba(129,140,248,0.5) 0%, rgba(99,102,241,0.25) 40%, transparent 70%)",
           animation: "halo-pulse 6s ease-in-out infinite",
+          willChange: "transform, opacity",
         }}
       />
       {/* Rotating ring */}
@@ -33,6 +34,8 @@ export function Orb({ size = 360, className, withOrbits = false }: OrbProps) {
             "conic-gradient(from 0deg, transparent 0%, rgba(165,180,252,0.35) 25%, transparent 50%, rgba(99,102,241,0.4) 75%, transparent 100%)",
           filter: "blur(8px)",
           animation: "orb-rotate 20s linear infinite",
+          // Cachea el desenfoque en una capa y solo la rota (no re-rasteriza cada frame).
+          willChange: "transform",
         }}
       />
       {withOrbits && (
